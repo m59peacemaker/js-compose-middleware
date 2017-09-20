@@ -1,9 +1,11 @@
-'use strict'
-
-const test = require('tape')
-const compose = require('./')
+import test from 'tape'
+import compose from './'
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
+const push = (array, value) => {
+  array.push(value)
+  return array
+}
 
 test('compose middleware', t => {
   t.test('should work', async t => {
@@ -334,7 +336,7 @@ test('compose middleware', t => {
     })
   })
 
-  t,test('next() should take context and it should be passed to next middleware', t => {
+  t.test('next() should take context and it should be passed to next middleware', t => {
     t.plan(1)
 
     compose([
@@ -343,4 +345,36 @@ test('compose middleware', t => {
     ])({ foo: 123 }).then(result => t.deepEqual(result, { foo: 123, bar: 456, baz: 789 }))
   })
 
+  t.test('next() should take context and it should be passed to next middleware', t => {
+    t.plan(1)
+
+    compose([
+      (context, next) => next(Object.assign({ bar: 456 }, context)),
+      (context, next) => next(Object.assign({ baz: 789 }, context))
+    ])({ foo: 123 }).then(result => t.deepEqual(result, { foo: 123, bar: 456, baz: 789 }))
+  })
+
+  t.test('should let middleware handle requests in given order', t => {
+    t.plan(1)
+
+    compose([
+      (context, next) => next(push(context, 1)),
+      (context, next) => next(push(context, 2)),
+      (context, next) => next(push(context, 3)),
+      context => t.deepEqual(context, [ 1, 2, 3 ])
+    ])([])
+  })
+
+  t.test('should let middleware handle responses in reverse of given order', t => {
+    t.plan(1)
+
+    compose([
+      (_, next) => next().then(response => push(response, 1)),
+      (_, next) => next().then(response => push(response, 2)),
+      (_, next) => next().then(response => push(response, 3)),
+      (_, next) => []
+    ])()
+      .then(response => t.deepEqual(response, [ 3, 2, 1 ]))
+      .catch(t.fail)
+  })
 })
