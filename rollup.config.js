@@ -17,12 +17,4 @@ export default [
     },
     plugins: Plugins()
   }
-  {
-    input: 'src/index.test.js',
-    output: {
-      file: 'build/index.test.js',
-      format: 'iife'
-    },
-    plugins: Plugins()
-  }
 ]

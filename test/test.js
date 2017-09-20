@@ -1,5 +1,5 @@
 import test from 'tape'
-import compose from './'
+import compose from '../src'
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
 const push = (array, value) => {
