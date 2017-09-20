@@ -1,11 +1,26 @@
 {
   "name": "compose-middleware",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
-  "main": "index.js",
+  "description": "Generic promise-based middleware composer that is friendly to pure functions.",
+  "main": "build/index.cjs.js",
+  "module": "src/index.js",
+  "keywords": [
+    "middleware",
+    "compose",
+    "pure",
+    "promise",
+    "next",
+    "request",
+    "response",
+    "modify",
+    "browser"
+  ],
   "scripts": {
-    "test": "node -r babel-register -r babel-polyfill index.test.js"
+    "test": "node -r babel-register -r babel-polyfill src/index.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m59peacemaker/js-compose-middleware"
   },
   "author": "Johnny Hauser <johnnyhauser@gmail.com>",
   "license": "CC0-1.0",
