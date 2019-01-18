@@ -1,6 +1,6 @@
 {
   "name": "@m59/compose-middleware",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Generic promise-based middleware composer that is friendly to pure functions.",
   "main": "build/index.cjs.js",
   "module": "src/index.js",
@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "clean": "rm -r build",
+    "clean": "rm -rf build",
     "test": "node test/node",
     "prepublish": "npm run clean; npm run build && npm run test"
   },
@@ -28,10 +28,10 @@
   "author": "Johnny Hauser <johnnyhauser@gmail.com>",
   "license": "CC0-1.0",
   "devDependencies": {
-    "reify": "^0.12.3",
-    "rollup": "^0.49.2",
-    "rollup-plugin-commonjs": "^8.2.1",
-    "rollup-plugin-node-resolve": "^3.0.0",
+    "reify": "^0.18.1",
+    "rollup": "^1.1.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
     "tape": "^4.6.3"
   }
 }
