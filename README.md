@@ -2,7 +2,7 @@
 
 Generic promise-based middleware composer that is friendly to pure functions.
 
-The primary difference from other middleware composing functions is that data in passed as arguments so that middleware is not forced to mutate it. Middleware can modify and pass on the same reference it is given, or it can make a new object and pass it on to the next middleware.
+The primary difference from other middleware composing functions is that data is passed as arguments so that middleware is not forced to mutate it. Middleware can modify and pass on the same reference it is given, or it can make a new object and pass it on to the next middleware.
 
 ## install
 
