@@ -1,6 +1,6 @@
 {
   "name": "@m59/compose-middleware",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generic promise-based middleware composer that is friendly to pure functions.",
   "main": "build/index.cjs.js",
   "module": "src/index.js",
